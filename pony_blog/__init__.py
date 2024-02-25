@@ -1,16 +1,46 @@
 import os
 
 from flask import Flask
+from datetime import datetime
+from pony.flask import Pony
+from pony.orm import Database, LongStr, PrimaryKey, Required, Set
 
 
-def create_app(test_config=None):
-    """Create and configure an instance of the Flask application."""
+# Define database and entities
+db = Database()
+
+class User(db.Entity):
+    _table_ = 'user'
+    
+    id = PrimaryKey(int, auto=True)
+    username = Required(str, unique=True)
+    password = Required(str)
+    posts = Set('Post')
+
+class Post(db.Entity):
+    _table_ = 'post'
+        
+    id = PrimaryKey(int, auto=True)
+    author_id = Required(User)
+    created = Required(datetime, default=lambda: datetime.now())
+    title = Required(str)
+    body = Required(LongStr)
+
+
+def create_app(test_config=None) -> Flask:
+    """
+    Create and configure an instance of the Flask application.
+    """
     app = Flask(__name__, instance_relative_config=True)
+
     app.config.from_mapping(
-        # a default secret that should be overridden by instance config
+        # A default secret that should be overridden by instance config
+        # DO NOT USE THIS SECRET KEY FOR PRODUCTION!!!
         SECRET_KEY="dev",
         # store the database in the instance folder
-        DATABASE=os.path.join(app.instance_path, "pony_orm.sqlite"),
+        PONY={'provider': 'sqlite', 
+              'filename': os.path.join(app.instance_path, "pony_blog.db"), 
+              'create_db': True}
     )
 
     if test_config is None:
@@ -26,16 +56,14 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route("/hello")
-    def hello():
-        return "Hello, World!"
+    # Wrap aplication requests with Pony's db_session
+    Pony(app)
 
-    # register the database commands
-    from . import db
+    # Generate database schema mapping
+    db.bind(**app.config['PONY'])
+    db.generate_mapping(create_tables=True)
 
-    db.init_app(app)
-
-    # apply the blueprints to the app
+    # Apply the blueprints to the app
     from . import auth
     from . import blog
 

@@ -27,8 +27,8 @@ $ pip install .
 
 ### Run
 ```
-$ flask --app pony_orm init-db
-$ flask --app pony_orm run --debug
+$ flask --app pony_blog init-db
+$ flask --app pony_blog run --debug
 ```
 
 Open http://127.0.0.1:5000 in a browser.
