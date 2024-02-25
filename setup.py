@@ -12,5 +12,5 @@ setup(
     install_requires=[
         'Flask',
         'pony',
-    ]
+    ],
 )
