@@ -56,7 +56,7 @@ def create_app(test_config=None) -> Flask:
     except OSError:
         pass
 
-    # Wrap aplication requests with Pony's db_session
+    # Wrap application requests with Pony's db_session
     Pony(app)
 
     # Generate database schema mapping
