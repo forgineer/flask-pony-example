@@ -98,7 +98,7 @@ def delete(id):
     """
     Delete a post.
 
-    Ensures that the post exists and that the logged in user is the author of the post.
+    Ensures that the post exists and that the logged-in user is the author of the post.
     """
     post = get_post(id)
     post.delete()
