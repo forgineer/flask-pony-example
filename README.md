@@ -1,8 +1,8 @@
 # flask-pony-example
 This repository features a comprehensive example of a Flask application seamlessly integrated with Pony ORM for database interactions. This project evolves from the foundational blog app tutorial found on the official [Flask documentation page](https://flask.palletsprojects.com/), enhancing it by substituting the traditional SQL/SQLite approach with Pony ORM entities. Recognizing the gap in Pony ORM's documentation—particularly its lack of detailed examples on managing a complete Flask application with additional blueprints—this repository aims to bridge that gap. This example not only demonstrates the fundamental integration of Flask with Pony ORM but also delves into the nuances of scaling the application with more complex structures and functionalities, providing a practical, in-depth guide for developers looking to leverage Pony ORM's capabilities within their Flask projects.
 
-## Pony Blog
-"Pony Blog" is an enhanced version of the 'flaskr' blogging application, originally introduced in the Flask official documentation as a tutorial for new developers.
+## PonyBlog
+"PonyBlog" is an enhanced version of the 'flaskr' blogging application, originally introduced in the Flask official documentation as a tutorial for new developers.
 
 Certainly! Below is a draft of installation instructions for your project, tailored for clarity and ease of use:
 
@@ -10,7 +10,7 @@ Certainly! Below is a draft of installation instructions for your project, tailo
 
 ### Installation Instructions for Pony Blog
 
-Follow these steps to get Pony Blog up and running on your local machine. This guide assumes you have Git and Python installed on your system.
+Follow these steps to get PonyBlog up and running on your local machine. This guide assumes you have Git and Python installed on your system.
 
 #### 1. Clone the Repository
 
@@ -67,7 +67,7 @@ This command installs everything needed to run the application, including Flask 
 Start the Pony Blog application with Flask’s development server:
 
 ```bash
-flask --app pony_blog run
+flask --app PonyBlog run
 ```
 
 #### 6. Access the Application
