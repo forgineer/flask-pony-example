@@ -4,8 +4,6 @@ This repository features a comprehensive example of a Flask application seamless
 ## PonyBlog
 "PonyBlog" is an enhanced version of the 'flaskr' blogging application, originally introduced in the Flask official documentation as a tutorial for new developers.
 
-Certainly! Below is a draft of installation instructions for your project, tailored for clarity and ease of use:
-
 ---
 
 ### Installation Instructions for Pony Blog
